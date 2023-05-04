@@ -1,0 +1,30 @@
+
+*{
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+nav{
+  display: flex;
+  justify-content: space-around;
+  background-color: black;
+  padding: 15px 0;
+}
+
+nav > div > ul {
+  display: flex;
+  gap: 50px;
+}
+
+li{
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+  margin: auto 0;
+}
+
+
+

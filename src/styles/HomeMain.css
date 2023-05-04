@@ -1,0 +1,39 @@
+#home{
+  background-image: url("../images/background2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#midThings{
+  margin: auto 0;
+}
+
+#homeText{
+  text-align: center;
+  color: black;
+  font-size: 4rem;
+}
+
+form{
+  text-align: center;
+}
+
+#books{
+  
+}
+
+#grid-container{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  text-align: center;
+  gap: 50px;
+  margin: 0 10%;
+}
+
+.grid-item{
+  color: black;
+}
