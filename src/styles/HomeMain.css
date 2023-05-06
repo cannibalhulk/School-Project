@@ -1,5 +1,5 @@
 #home{
-  background-image: url("../images/background2.jpg");
+  background-image: url("../public/assets/background2.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -9,7 +9,17 @@
 }
 
 #midThings{
-  margin: auto 0;
+  /* margin: auto 0; */
+  margin-top: 10%;
+}
+
+#filter{
+  text-align: center;
+}
+
+#filter > span{
+  margin-right: 32%;
+  color: black;
 }
 
 #homeText{
@@ -22,18 +32,39 @@ form{
   text-align: center;
 }
 
-#books{
-  
+#midThings input[type=text] {
+  width: 30%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 1rem;
+  color: #333;
 }
 
-#grid-container{
-  display: grid;
-  grid-template-columns: auto auto auto;
-  text-align: center;
-  gap: 50px;
-  margin: 0 10%;
+input[type=text]:focus {
+  border: 2px solid #555;
 }
 
-.grid-item{
-  color: black;
+#midThings input[type=submit] {
+  background-color: rgb(8, 178, 178);
+  color: #333;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  padding: 12px 20px;
+  cursor: pointer;
+  margin-left: .1%;
+}
+
+#midThings input[type=submit]:hover {
+  background-color: rgb(7, 149, 149);
+  color: #fff;
+}
+
+#midThings input[type=submit]:active {
+  background-color: #555;
+  color: #fff;
+  border: 2px solid #555;
 }

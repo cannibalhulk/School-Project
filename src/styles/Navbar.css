@@ -5,11 +5,21 @@
   font-weight: 500;
 }
 
+body{
+  /* height: 2000px; */
+}
+
 nav{
   display: flex;
   justify-content: space-around;
   background-color: black;
   padding: 15px 0;
+}
+
+nav >div{
+  text-align: center;
+  justify-content: center;
+  margin: auto 0;
 }
 
 nav > div > ul {
@@ -24,6 +34,14 @@ li{
 a{
   text-decoration: none;
   margin: auto 0;
+}
+
+#logo{
+  height: 40px;
+}
+
+#logo > img{
+  height: 100%;
 }
 
 

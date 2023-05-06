@@ -5,20 +5,20 @@ function Navbar() {
   return (
     <>
       <nav>
-        <a href="/">Loqo</a>
+        <a href="/" id='logo'><img src="../public/assets/bookLogo.png" alt="logo"/></a>
         <div>
           <ul>
             <li>
               <a href="/">Ana səhifə</a>
             </li>
             <li>
-              <a href="/daxilol">Daxil ol</a>
+              <a href="/login">Daxil ol</a>
             </li>
             <li>
-              <a href="/haqqinda">Haqqımızda</a>
+              <a href="/about">Haqqımızda</a>
             </li>
             <li>
-              <a href="/elaqe">Əlaqə</a>
+              <a href="/contact">Əlaqə</a>
             </li>
           </ul>
         </div>
