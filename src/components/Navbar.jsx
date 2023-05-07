@@ -12,7 +12,7 @@ function Navbar() {
               <a href="/">Ana səhifə</a>
             </li>
             <li>
-              <a href="/login">Daxil ol</a>
+              <a href="/profile">Profil</a>
             </li>
             <li>
               <a href="/about">Haqqımızda</a>
