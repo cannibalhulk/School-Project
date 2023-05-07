@@ -9,3 +9,7 @@
 .grid-item{
   color: black;
 }
+
+.grid-item > h1,p{
+  color: black;
+}

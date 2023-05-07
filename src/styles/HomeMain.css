@@ -1,5 +1,5 @@
 #home{
-  background-image: url("../public/assets/background2.jpg");
+  background-image: url("/assets/background2.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -28,7 +28,7 @@
   font-size: 4rem;
 }
 
-form{
+#search{
   text-align: center;
 }
 
