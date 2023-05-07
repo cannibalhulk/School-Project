@@ -5,7 +5,7 @@ function Navbar() {
   return (
     <>
       <nav>
-        <a href="/" id='logo'><img src="../public/assets/bookLogo.png" alt="logo"/></a>
+        <a href="/" id='logo'><img src="/assets/bookLogo.png" alt="logo"/></a>
         <div>
           <ul>
             <li>
