@@ -1,5 +1,5 @@
 import { UserButton, useUser } from "@clerk/clerk-react"
-import '../../styles/Profile/UserPage.css'
+import '../../Profile/UserPage.css'
 
 function UserPage() {
     const { isSignedIn, user } = useUser();
@@ -7,7 +7,7 @@ function UserPage() {
         return null;
     }
     return (
-        <section>
+        <section id="userSection">
             <h1>Salam <span id="user">Şükür</span> 👋{/* user.firstName */}</h1>
             <UserButton />
         </section>

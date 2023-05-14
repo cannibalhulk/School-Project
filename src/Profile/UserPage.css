@@ -1,4 +1,4 @@
-section{
+#userSection{
     width: 100vw;
     height: 100vh;
     color: black;
@@ -9,7 +9,7 @@ section{
     text-align: left;
 }
 
-section h1{
+#userSection h1{
     font-size: 30px;
     color: black;
 }

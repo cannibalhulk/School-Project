@@ -1,15 +1,6 @@
-// import { createStore } from "redux";
-// import { reducer } from "./reducer";
+import {createStore} from 'redux';
+import reducer from './reducer';
 
-// const store = createStore(cartReducer);
+const store = createStore(reducer);
 
-// export default store;
-
-import { configureStore } from '@reduxjs/toolkit'
-import bookSlicerReducer from "./slicer/bookSlicer"
-
-export default configureStore({
-  reducer: {
-    searchedBooksList: bookSlicerReducer
-  },
-});
+export default store;
