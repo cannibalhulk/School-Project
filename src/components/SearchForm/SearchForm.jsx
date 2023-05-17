@@ -55,11 +55,11 @@ const SearchForm = () => {
             <br />
             <span id='filter' onClick={filterHandler}>Filtrlə{filterIsVisible? <i className="fa-sharp fa-solid fa-chevron-up"></i> : <i className="fa-sharp fa-solid fa-chevron-down"></i>}</span>
             <br />
-            {filterIsVisible && <div>
+            {filterIsVisible && <div id='filteringBlock'>
               <label>Müəllif: </label>
               <input type="text" ref={filterAuthorText} />
               <br />
-              <label>Kitab ili aralığı: </label>
+              <label>Nəşr ili aralığı: </label>
               <input type="number" ref={filterYearFrom} /> dən
               <input type="number" ref={filterYearTo} /> dək
             </div>}

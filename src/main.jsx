@@ -77,7 +77,8 @@ root.render(
                       <UserPage />
                     </SignedIn>
                     <SignedOut>
-                      <RedirectToSignIn />{/*<HomePage/>*/}
+                      <RedirectToSignIn />
+                      {/*<HomePage/>*/}
                     </SignedOut>
                   </>
                 }

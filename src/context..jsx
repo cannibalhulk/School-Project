@@ -4,7 +4,7 @@ const URL = "http://openlibrary.org/search.json?title=";
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
-    const [searchTerm, setSearchTerm] = useState("a");
+    const [searchTerm, setSearchTerm] = useState("programming");
     const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(true);
     const [resultTitle, setResultTitle] = useState("");
@@ -21,9 +21,13 @@ const AppProvider = ({ children }) => {
             const { docs } = data;
 
             if (docs) {
-
                 let newBooks = docs.slice(0, 20).filter((bookSingle) => {
-                    if (filterAuthorText && bookSingle.author_name != filterAuthorText) {
+                    
+                    const pattern = new RegExp(filterAuthorText, 'i');
+                    const str = bookSingle.author_name;
+                    const isMatch = pattern.test(str);
+
+                    if (filterAuthorText && !isMatch) {
                         return false;
                     }
                     if (filterYearFrom && bookSingle.first_publish_year < filterYearFrom) {

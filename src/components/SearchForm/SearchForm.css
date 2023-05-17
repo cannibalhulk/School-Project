@@ -21,3 +21,15 @@
 .filterActive{
     background-color: red;
 }
+
+#filteringBlock input[type=text]{
+    width: 35%;
+}
+
+#filteringBlock input[type=number]{
+    width: 10%;
+}
+
+#filteringBlock{
+    text-align: center;
+}
