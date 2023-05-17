@@ -53,10 +53,10 @@ const BookDetails = () => {
       <div className='container'>
         <button type='button' className='flex flex-c back-btn' onClick={() => navigate("/book")}>
           <FaArrowLeft size={22} />
-          <span className='fs-18 fw-6'>Go Back</span>
+          <span className='fs-18 fw-6'>Geri qayıt</span>
         </button>
         <div class="container">
-          <Typography className='fs-26' component="legend">Read only</Typography>
+          <Typography className='fs-26' component="legend">{/*Read only*/}</Typography>
           <Rating className='fs-26' name="read-only" value={4} readOnly />
         </div>
         <div className='book-details-content grid'>

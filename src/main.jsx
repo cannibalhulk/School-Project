@@ -15,7 +15,7 @@ import { Provider } from 'react-redux'
 import store from './redux/store'
 import { ClerkProvider, SignIn, SignUp, SignedIn, SignedOut, RedirectToSignIn } from "@clerk/clerk-react";
 import { dark } from '@clerk/themes';
-import UserPage from './components/auth/UserPage';
+import UserPage from "./components/Auth/UserPage";
 
 const clerkPubKey = import.meta.env.VITE_REACT_APP_CLERK_PUBLISHABLE_KEY;
 
@@ -78,7 +78,7 @@ root.render(
                     </SignedIn>
                     <SignedOut>
                       <RedirectToSignIn />
-                      {/*<HomePage/>*/}
+                      {/* <HomePage /> */}
                     </SignedOut>
                   </>
                 }

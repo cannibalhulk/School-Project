@@ -17,9 +17,9 @@ const SearchForm = () => {
   let [filterIsVisible, setFilterIsVisible] = useState(false);
 
   let filterHandler = () => {
-    if (filterIsVisible){
+    if (filterIsVisible) {
       setFilterIsVisible(false);
-    }else{
+    } else {
       setFilterIsVisible(true);
     }
   }
@@ -53,15 +53,17 @@ const SearchForm = () => {
               </button>
             </div>
             <br />
-            <span id='filter' onClick={filterHandler}>Filtrlə{filterIsVisible? <i className="fa-sharp fa-solid fa-chevron-up"></i> : <i className="fa-sharp fa-solid fa-chevron-down"></i>}</span>
+            <button id='filter' onClick={filterHandler}>Filtrlə{filterIsVisible ? <i className="fa-sharp fa-solid fa-chevron-up"></i> : <i className="fa-sharp fa-solid fa-chevron-down"></i>}</button>
             <br />
             {filterIsVisible && <div id='filteringBlock'>
-              <label>Müəllif: </label>
-              <input type="text" ref={filterAuthorText} />
-              <br />
-              <label>Nəşr ili aralığı: </label>
-              <input type="number" ref={filterYearFrom} /> dən
-              <input type="number" ref={filterYearTo} /> dək
+              <div>
+                <label>Müəllif: </label>
+                <input type="text" ref={filterAuthorText} />
+                <br />
+                <label>Nəşr ili aralığı:</label>
+                <input type="number" ref={filterYearFrom} /> <span className='range'>-dən</span>
+                <input type="number" ref={filterYearTo} /> <span className='range'>-ə dək</span>
+              </div>
             </div>}
           </form>
         </div>

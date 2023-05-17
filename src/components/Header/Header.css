@@ -13,3 +13,17 @@
     opacity: 0.8;
     max-width: 770px;
 }
+
+header > div > h2,p{
+    color: white
+}
+
+header > div > h2{
+    font-size: 6rem !important;
+    font-weight: 700 !important;
+}
+
+header > div > p{
+    font-size: 2rem !important;
+    font-weight: 500 !important;
+}
