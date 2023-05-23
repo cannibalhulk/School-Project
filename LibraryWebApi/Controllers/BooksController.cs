@@ -6,143 +6,100 @@ using System.Data;
 
 namespace LibraryWebApi.Controllers;
 
-[ApiController]
 [Route("api/books")]
-public class BookController : ControllerBase
+[ApiController]
+public class BooksController : ControllerBase
 {
     private readonly IBookService _bookService;
 
-    public BookController(IBookService bookService)
+    public BooksController(IBookService bookService)
     {
         _bookService = bookService;
     }
 
+    // GET api/books
     [HttpGet]
-    public async Task<ActionResult<List<Book>>> GetAllBooks()
+    public async Task<ActionResult<IEnumerable<Book>>> GetAllBooksAsync()
     {
-        try
-        {
-            var books = await _bookService.GetAllBooks();
-            return Ok(books);
-        }
-        catch (Exception ex)
-        {
-            // Обработка ошибки
-            return StatusCode(500, $"An error occurred: {ex.Message}");
-        }
+        var books = await _bookService.GetAllBooksAsync();
+        return Ok(books);
     }
 
-    [HttpGet("{id}")]
-    public async Task<ActionResult<Book>> GetBookById(int id)
+    // GET api/books/sort/{sortBy}
+    [HttpGet("sort/{sortBy}")]
+    public async Task<ActionResult<IEnumerable<Book>>> GetSortedBooksAsync(string sortBy)
     {
-        try
-        {
-            var book = await _bookService.GetBookById(id);
-            if (book == null)
-            {
-                return NotFound();
-            }
-            return Ok(book);
-        }
-        catch (Exception ex)
-        {
-            // Обработка ошибки
-            return StatusCode(500, $"An error occurred: {ex.Message}");
-        }
+        var books = await _bookService.GetSortedBooksAsync(sortBy);
+        return Ok(books);
     }
 
+    // GET api/books/filter?title={title}&author={author}&...
+    [HttpGet("filter")]
+    public async Task<ActionResult<IEnumerable<Book>>> GetFilteredBooksAsync([FromQuery] BookFilter filter)
+    {
+        var books = await _bookService.GetFilteredBooksAsync(filter);
+        return Ok(books);
+    }
+
+    // GET api/books/page/{page}?title={title}&author={author}&...
+    [HttpGet("page/{page}")]
+    public async Task<ActionResult<BookResult>> GetBooksByPageAsync(int page, [FromQuery] BookFilter filter)
+    {
+        var result = await _bookService.GetBooksByPageAsync(page, filter);
+        return Ok(result);
+    }
+
+    // POST api/books
     [HttpPost]
     [Authorize(Roles = "Admin")]
-    public async Task<ActionResult<Book>> CreateBook(Book book)
+    public async Task<ActionResult<Book>> CreateBookAsync(Book book)
     {
-        try
-        {
-            var createdBook = await _bookService.CreateBook(book);
-            return CreatedAtAction(nameof(GetBookById), new { id = createdBook.Id }, createdBook);
-        }
-        catch (Exception ex)
-        {
-            // Обработка ошибки
-            return StatusCode(500, $"An error occurred: {ex.Message}");
-        }
+        var createdBook = await _bookService.CreateBookAsync(book);
+        return CreatedAtAction(nameof(GetBookByIdAsync), new { id = createdBook.Id }, createdBook);
     }
 
+    // GET api/books/{id}
+    [HttpGet("{id}")]
+    public async Task<ActionResult<Book>> GetBookByIdAsync(int id)
+    {
+        var book = await _bookService.GetBookByIdAsync(id);
+        if (book == null)
+        {
+            return NotFound();
+        }
+        return Ok(book);
+    }
+
+    // PUT api/books/{id}
     [HttpPut("{id}")]
     [Authorize(Roles = "Admin")]
-    public async Task<ActionResult<Book>> UpdateBook(int id, Book book)
+    public async Task<IActionResult> UpdateBookAsync(int id, Book book)
     {
-        try
+        if (id != book.Id)
         {
-            if (id != book.Id)
-            {
-                return BadRequest();
-            }
-
-            var existingBook = await _bookService.GetBookById(id);
-            if (existingBook == null)
-            {
-                return NotFound();
-            }
-
-            if (!HasPermissionToEditBook(existingBook))
-            {
-                return Forbid();
-            }
-
-            var updatedBook = await _bookService.UpdateBook(book);
-            return Ok(updatedBook);
+            return BadRequest();
         }
-        catch (Exception ex)
+
+        var updatedBook = await _bookService.UpdateBookAsync(id, book);
+        if (updatedBook == null)
         {
-            // Обработка ошибки
-            return StatusCode(500, $"An error occurred: {ex.Message}");
+            return NotFound();
         }
+
+        return NoContent();
     }
 
+    // DELETE api/books/{id}
     [HttpDelete("{id}")]
     [Authorize(Roles = "Admin")]
-    public async Task<ActionResult> DeleteBook(int id)
+    public async Task<IActionResult> DeleteBookAsync(int id)
     {
-        try
+        var deletedBook = await _bookService.DeleteBookAsync(id);
+        if (deletedBook == null!)
         {
-            var book = await _bookService.GetBookById(id);
-            if (book == null)
-            {
-                return NotFound();
-            }
-
-            if (!HasPermissionToDeleteBook(book))
-            {
-                return Forbid();
-            }
-
-            await _bookService.DeleteBook(id);
-            return NoContent();
+            return NotFound();
         }
-        catch (Exception ex)
-        {
-            // Обработка ошибки
-            return StatusCode(500, $"An error occurred: {ex.Message}");
-        }
-    }
 
-    private bool HasPermissionToEditBook(Book book)
-    {
-        // Проверка прав доступа для редактирования книги.
-        // Верните true, если пользователь имеет право редактировать книгу, иначе false.
-        // Например, можно проверить роль пользователя или другие правила доступа.
-
-        // В данном примере разрешается редактирование всем пользователям
-        return true;
-    }
-
-    private bool HasPermissionToDeleteBook(Book book)
-    {
-        // Проверка прав доступа для удаления книги.
-        // Верните true, если пользователь имеет право удалить книгу, иначе false.
-        // Например, можно проверить роль пользователя или другие правила доступа.
-
-        // В данном примере разрешается удаление всем пользователям
-        return true;
+        return NoContent();
     }
 }

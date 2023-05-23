@@ -5,12 +5,12 @@ namespace LibraryWebApi.Services.Interfaces;
 
 public interface IBookService
 {
-    Task<Book> CreateBook(Book book);
-
-    Task<Book> GetBookById(int id);
-
-    Task<List<Book>> GetAllBooks();
-    Task<Book> UpdateBook(Book book);
-
-    Task DeleteBook(int id);
+    Task<IEnumerable<Book>> GetAllBooksAsync();
+    Task<IEnumerable<Book>> GetSortedBooksAsync(string sortBy);
+    Task<IEnumerable<Book>> GetFilteredBooksAsync(BookFilter filter);
+    Task<BookResult> GetBooksByPageAsync(int page, BookFilter filter);
+    Task<Book> GetBookByIdAsync(int id);
+    Task<Book> CreateBookAsync(Book book);
+    Task<Book> UpdateBookAsync(int id, Book book);
+    Task<bool> DeleteBookAsync(int id);
 }

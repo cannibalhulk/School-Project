@@ -8,9 +8,9 @@ namespace LibraryWebApi.Services;
 
 public class LibraryDbContext : DbContext
 {
-	public LibraryDbContext(DbContextOptions<LibraryDbContext> options) :base(options)
-	{
-      // Database.EnsureDeleted();
+    public LibraryDbContext(DbContextOptions<LibraryDbContext> options) : base(options)
+    {
+        // Database.EnsureDeleted();
         Database.EnsureCreated();
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -26,11 +26,10 @@ public class LibraryDbContext : DbContext
             .WithMany()
             .HasForeignKey(fb => fb.BookId);
 
-        // Определение ограничений и индексов
+        // Генерация 20 книг
 
         var faker = new Faker();
-        int id = 0;
-        // Генерация 20 книг
+        int id = 1;
         var books = Enumerable.Range(1, 20).Select(i => new Book
         {
             Id = id++,
@@ -39,9 +38,14 @@ public class LibraryDbContext : DbContext
             Description = faker.Lorem.Sentence(),
             Genre = faker.Lorem.Word(),
             DateAdded = faker.Date.Past(),
-            DateCreated = DateTime.Now
-
+            CreatedDate = DateTime.Now,
+            FileName = faker.Lorem.Word(),
+            FileContent = new byte[10],
+            ImageUrl = faker.Lorem.Word(),
+            //Hashtags = new List<string>(),
+            PrivateStatus = false
         }).ToList();
+
         modelBuilder.Entity<Book>().HasData(books);
 
         base.OnModelCreating(modelBuilder);
