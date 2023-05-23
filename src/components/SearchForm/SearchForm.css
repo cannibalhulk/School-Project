@@ -1,0 +1,63 @@
+.search-form{
+    width: 100%;
+    max-width: 680px;
+    position: relative;
+}
+.search-form-elem{
+    padding: 1.4rem 2.8rem;
+    border-radius: 3.8rem;
+}
+.search-form-elem .form-control{
+    font-size: 2rem;
+    padding: 0.6rem;
+}
+.search-form-elem .form-control::placeholder{
+    opacity: 0.9;
+}
+
+#search-icon{
+    color: #164e63;
+}
+
+#filter{
+    font-size: 2rem;
+    font-weight: 500;
+    position: absolute;
+    left: 2%;
+}
+
+.filterActive{
+    background-color: red;
+}
+
+#filteringBlock > *{
+    color: black;
+    font-weight: 500 !important;
+    font-size: 1.6rem;
+}
+
+#filteringBlock input[type=text]{
+    width: 64%;
+}
+
+#filteringBlock input[type=number]{
+    width: 18%;
+}
+
+#filteringBlock{
+    text-align: right;
+}
+
+#filteringBlock *{
+    margin-left: 2%;
+}
+
+#filteringBlock > div{
+    text-align: left;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.range{
+    margin: 0 !important;
+}

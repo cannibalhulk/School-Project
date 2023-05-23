@@ -1,0 +1,23 @@
+#userSection{
+    width: 100vw;
+    height: 100vh;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+}
+
+#userSection h1{
+    font-size: 30px;
+    color: black;
+}
+
+#user{
+    font-size: 30px;
+    font-weight: 600;
+    background: -webkit-linear-gradient(180deg,#5db3c9, #237ed4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

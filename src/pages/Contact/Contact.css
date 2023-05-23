@@ -1,0 +1,54 @@
+ 
+
+#contact-form
+{
+    display: flex;
+    flex-direction: column;
+    padding: 5rem;
+    margin-top: 3rem; 
+    width: 100%;
+} 
+.name, .adress, .message, .send
+{
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+} 
+
+.send
+{
+background: rgb(53, 100, 193);
+transition: 0.5s;
+}
+
+.send:hover
+{
+    background: #706c6c;
+}
+
+.contact{
+    padding: 3rem 0;
+    background-color: #1d1c1c;
+}
+.contact-content{
+    gap: 4rem;
+} 
+.contact-img img{
+    max-width: 520px;
+} 
+
+@media screen and (min-width: 800px){
+    .contact-content{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    #contact-form{
+        margin-top: 0;
+    }
+    .contact-img img{
+        margin-left: 0;
+    }  
+}
+/* 
+span{
+    color: white;
+} */
