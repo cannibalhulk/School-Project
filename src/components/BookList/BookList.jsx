@@ -1,14 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import { useGlobalContext } from '../../context.';
 import Book from "./Book";
 import Loading from "../Loader/Loader";
 import coverImg from "../../assets/images/cover_not_found.jpg";
 import "./BookList.css";
-
+import { PaginationControl } from 'react-bootstrap-pagination-control';
 //https://covers.openlibrary.org/b/id/240727-S.jpg
 
 const BookList = () => {
   const { books, loading, resultTitle } = useGlobalContext();
+  const [page, setPage] = useState(1);
+
   const booksWithCovers = books.map((singleBook) => {
     return {
       ...singleBook,
@@ -17,7 +19,6 @@ const BookList = () => {
       cover_img: singleBook.cover_id ? `https://covers.openlibrary.org/b/id/${singleBook.cover_id}-L.jpg` : coverImg
     }
   });
-
   if (loading) return <Loading />;
 
   return (
@@ -35,7 +36,21 @@ const BookList = () => {
             })
           }
         </div>
+        <div className="pageContainer">
+          <PaginationControl
+              page={page}
+              between={4}
+              total={250}
+              limit={20}
+              changePage={(page) => {
+                setPage(page);
+                console.log(page)
+              }}
+              ellipsis={1}
+          />
+        </div>
       </div>
+
     </section>
   )
 }

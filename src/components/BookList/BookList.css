@@ -2,6 +2,26 @@
     padding: 3rem 0;
     background-color: #1d1c1c;
 }
+.pageContainer ul
+{
+    margin: 5rem 3rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.pageContainer ul li
+{
+    background: #1b1b1b;
+    border-radius: 15px;
+    border: none;
+    padding: 1rem 2rem;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.42);
+    font-weight: bold;
+    margin: 0.5rem;
+}
 .booklist-content{
     gap: 3rem;
 }

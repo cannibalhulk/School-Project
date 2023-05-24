@@ -12,33 +12,14 @@ const Profile = () => {
     const currentUser = useSelector((state) => state.user);
     let favorites = useSelector((state) => state.favorites);
 
-//    const auth = getAuth(app);
-    // let [user, setUser] = useState();
 
-    // useEffect(() => {
-    //     onAuthStateChanged(auth, (u) => {
-    //         if (u) {
-    //             console.log(u);
-    //             setUser(u);
-    //         } else {
-    //             alert('nooooo!');
-    //             setUser({});
-    //             return navigate('/');
-    //         }
-    //     });
-    // })
 
     const exit = () => {
-        signOut(auth).then(() => {
             alert('Bye! 😭');
             store.dispatch({ type: 'SIGN_IN_USER', payload: {} });
 
             return navigate('/');
-        }).catch((error) => {
-            console.log(`Error accured: `);
-            console.log(error);
-            return navigate('/');
-        });
+
     }
 
     return (

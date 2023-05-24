@@ -25,6 +25,7 @@ root.render(
               <Route path="contact" element={<Contact />} />
               <Route path="book" element={<BookList />} />
               <Route path="/book/:id" element={<BookDetails />} />
+              <Route path="/profile" element={<Profile />} />
             </Route>
             <Route path="auth" element={<Auth />} />
           </Routes>
