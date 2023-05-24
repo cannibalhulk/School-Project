@@ -45,48 +45,44 @@ root.render(
               <Route path="book" element={<BookList />} />
               <Route path="/book/:id" element={<BookDetails />} />
 
-              <Route
-                path="/login/*"
-                element={
-                  <SignIn
-                    routing="path"
-                    path="/login"
-                    appearance={{
-                      layout: {
-                        socialButtonsVariant: 'iconButton',
-                        socialButtonsPlacement: 'bottom'
-                      },
-                      variables: {
-                        colorBackground: "#164E63",
-                        fontSize: "25px"
-                      }
-                    }}
-                  />
-                }
-
-              />
-              <Route
-                path="/sign-up/*"
-                element={<SignUp routing="path" path="/register" />}
-              />
-              <Route
-                path="/login"
-                element={
-                  <>
-                    <SignedIn>
-                      <UserPage />
-                    </SignedIn>
-                    <SignedOut>
-                      <RedirectToSignIn />
-                      {/* <HomePage /> */}
-                    </SignedOut>
-                  </>
-                }
-              />
-
             </Route>
-
-
+            <Route
+              path="/login/*"
+              element={
+                <SignIn
+                  routing="path"
+                  path="/login"
+                  appearance={{
+                    layout: {
+                      socialButtonsVariant: 'iconButton',
+                      socialButtonsPlacement: 'bottom'
+                    },
+                    variables: {
+                      colorBackground: "#164E63",
+                      fontSize: "25px"
+                    }
+                  }}
+                />
+              }
+            />
+            <Route
+              path="/sign-up/*"
+              element={<SignUp routing="path" path="/register" />}
+            />
+            <Route
+              path="/login"
+              element={
+                <>
+                  <SignedIn>
+                    <UserPage />
+                  </SignedIn>
+                  <SignedOut>
+                    {/* <RedirectToSignIn /> */}
+                    <Home />
+                  </SignedOut>
+                </>
+              }
+            />
           </Routes>
         </ClerkProvider>
       </BrowserRouter>
