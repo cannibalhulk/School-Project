@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux'
 import store from '../../redux/store';
 import { useNavigate } from "react-router-dom"
-import profileImg from "../../images/user-img.jpg";
+import profileImg from "../../assets/images/user-img.jpg";
 import Book from "../../components/BookList/Book.jsx"
 import "./Profile.css";
 

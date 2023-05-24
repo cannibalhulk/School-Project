@@ -49,11 +49,11 @@ const SearchForm = () => {
             <div className='search-form-elem flex flex-sb bg-white'>
               <input type="text" className='form-control' placeholder='Kitab adı...' ref={searchText} />
               <button type="submit" className='flex flex-c' onClick={handleSubmit}>
-                <FaSearch id='search-icon' size={32} />
+                <FaSearch id='search-icon' size={32} /> 
               </button>
             </div>
             <br />
-            <button id='filter' onClick={filterHandler}>Filtrlə{filterIsVisible ? <i className="fa-sharp fa-solid fa-chevron-up"></i> : <i className="fa-sharp fa-solid fa-chevron-down"></i>}</button>
+            <span id='filter' onClick={filterHandler}>Filtrlə{filterIsVisible ? <i className="fa-sharp fa-solid fa-chevron-up"></i> : <i className="fa-sharp fa-solid fa-chevron-down"></i>}</span>
             <br />
             {filterIsVisible && <div id='filteringBlock'>
               <div>
