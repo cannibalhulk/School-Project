@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useGlobalContext } from '../../context.';
 import Book from "./Book";
 import Loading from "../Loader/Loader";
-import coverImg from "../../images/cover_not_found.jpg";
+import coverImg from "../../assets/images/cover_not_found.jpg";
 import "./BookList.css";
 
 //https://covers.openlibrary.org/b/id/240727-S.jpg
@@ -30,7 +30,7 @@ const BookList = () => {
           {
             booksWithCovers.slice(0, 30).map((item, index) => {
               return (
-                <Book {...item} />
+                <Book {...item} key={index}/>
               )
             })
           }

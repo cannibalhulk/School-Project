@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import emailjs, { init } from 'emailjs-com';
 import "./Contact.css";
-import contactImg from "../../images/contact-us.jpg";
+import contactImg from "../../assets/images/contact-us.jpg";
 
 const Contact = () => {
     const [name, setName] = useState('');

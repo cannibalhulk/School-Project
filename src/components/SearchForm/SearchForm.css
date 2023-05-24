@@ -1,63 +1,71 @@
-.search-form{
+.search-form {
     width: 100%;
     max-width: 680px;
     position: relative;
 }
-.search-form-elem{
+
+.search-form-elem {
     padding: 1.4rem 2.8rem;
     border-radius: 3.8rem;
 }
-.search-form-elem .form-control{
+
+.search-form-elem .form-control {
     font-size: 2rem;
     padding: 0.6rem;
 }
-.search-form-elem .form-control::placeholder{
+
+.search-form-elem .form-control::placeholder {
     opacity: 0.9;
 }
 
-#search-icon{
+#search-icon {
     color: #164e63;
 }
 
-#filter{
+#filter {
     font-size: 2rem;
     font-weight: 500;
     position: absolute;
     left: 2%;
+    color: black;
 }
 
-.filterActive{
+#filter:hover {
+    cursor: pointer;
+}
+
+.filterActive {
     background-color: red;
 }
 
-#filteringBlock > *{
+#filteringBlock>* {
     color: black;
     font-weight: 500 !important;
     font-size: 1.6rem;
 }
 
-#filteringBlock input[type=text]{
+#filteringBlock input[type=text] {
     width: 64%;
 }
 
-#filteringBlock input[type=number]{
+#filteringBlock input[type=number] {
     width: 18%;
 }
 
-#filteringBlock{
+#filteringBlock {
     text-align: right;
 }
 
-#filteringBlock *{
+#filteringBlock * {
     margin-left: 2%;
 }
 
-#filteringBlock > div{
+#filteringBlock>div {
     text-align: left;
     width: 60%;
     margin: 0 auto;
 }
 
-.range{
+.range {
     margin: 0 !important;
 }

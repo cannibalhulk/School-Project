@@ -53,7 +53,7 @@ const SearchForm = () => {
               </button>
             </div>
             <br />
-            <button id='filter' onClick={filterHandler}>Filtrlə{filterIsVisible ? <i className="fa-sharp fa-solid fa-chevron-up"></i> : <i className="fa-sharp fa-solid fa-chevron-down"></i>}</button>
+            <span id='filter' onClick={filterHandler}>Filtrlə{filterIsVisible ? <i className="fa-sharp fa-solid fa-chevron-up"></i> : <i className="fa-sharp fa-solid fa-chevron-down"></i>}</span>
             <br />
             {filterIsVisible && <div id='filteringBlock'>
               <div>
