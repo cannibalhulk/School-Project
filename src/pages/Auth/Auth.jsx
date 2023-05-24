@@ -2,32 +2,54 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { FaArrowLeft } from "react-icons/fa";
 import { app } from '../../fireBase/FireBase';
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth'
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import "./Auth.css";
 import store from '../../redux/store';
 
-export default function Auth (props) {
+export default function Auth () {
   const navigate = useNavigate();
   let [authMode, setAuthMode] = useState("signin")
-  let [email, setEmail] = useState()
-  let [password, setPassword] = useState()
+  let [email, setEmail] = useState('')
+  let [password, setPassword] = useState('')
+  let [firstname, setFirstName] = useState('')
+  let [lastname, setLastName] = useState('')
+  let [pin, setPin] = useState('')
+  let [role, setRole] = useState('user')
+  let [birthdate, setBirthdate] = useState('')
+  let [phone, setPhone] = useState('')
 
+
+  /* user POST request 
+  ** https://localhost:7264/api/Account/register URL-e
+  **  ⬇️
+  */
   const signUp = (e) => {
     e.preventDefault(false);
-    if (email && password) {
-      const authentication = getAuth(app);
-      createUserWithEmailAndPassword(authentication, email, password)
-        .then(response => {
-          console.log(`Success: ${response}`);
-
-          alert("Success!");
-          setAuthMode("signin");
+    if (email && password && lastname && firstname && pin && phone && birthdate && role) 
+    {
+        fetch('https://localhost:7264/api/Account/register',{
+          method:'POST',
+          mode: 'cors',
+          headers:{
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin':'http://localhost:5173',
+            'accept': '*/*'
+          },
+          body: JSON.stringify({
+            firstName: firstname,
+            lastName: lastname,
+            dateOfBirth: birthdate,
+            phoneNumber: phone,
+            email: email,
+            financialCode: pin,
+            password: password,
+            role: role,
+          })
         })
-        .catch(error => {
-          console.log(`Error accured: `);
-          console.log(error);
-          navigate('/')
-        });
+        .then(res=>res.json())
+        .then(data=>{
+          console.log(data)
+        })
 
     } else {
       alert('Please fill in all fields.');
@@ -129,6 +151,22 @@ export default function Auth (props) {
             </a>
           </div>
           <div>
+          <div>
+            <label>Firstname</label>
+            <input
+              type="text"
+              placeholder="Firstname"
+              onChange={(e) => { setFirstName(e.target.value) }}
+            />
+          </div>
+          <div>
+            <label>Lastname</label>
+            <input
+              type="text"
+              placeholder="Lastname"
+              onChange={(e) => { setLastName(e.target.value) }}
+            />
+          </div>
             <label>Email address</label>
             <input
               type="email"
@@ -142,6 +180,31 @@ export default function Auth (props) {
               type="password"
               placeholder="Password"
               onChange={(e) => { setPassword(e.target.value) }}
+            />
+          </div>
+          
+          <div>
+            <label>Birthdate</label>
+            <input
+              type="text"
+              placeholder="DD-MM-YYYY"
+              onChange={(e) => { setBirthdate(e.target.value) }}
+            />
+          </div>
+          <div>
+            <label>Personal Identification Number (FIN)</label>
+            <input
+              type="text"
+              placeholder="FIN"
+              onChange={(e) => { setPin(e.target.value) }}
+            />
+          </div>
+          <div>
+            <label>Phone Number</label>
+            <input
+              type="text"
+              placeholder="Phone Number"
+              onChange={(e) => { setPhone(e.target.value) }}
             />
           </div>
           <input type="submit" className="button btn btn-primary" onClick={signUp} value='Sign Up' />
