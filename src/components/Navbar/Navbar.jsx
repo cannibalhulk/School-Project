@@ -47,7 +47,7 @@ const Navbar = () => {
               {
                 currentUser?.email ? <li className='nav-item'>
                   <Link to="profile" className='nav-link text-uppercase text-white fs-22 fw-6 ls-1'>Profile</Link>
-                </li> : <Link to="login" className='nav-link text-uppercase text-white fs-22 fw-6 ls-1'>Daxil ol</Link>
+                </li> : <Link to="auth" className='nav-link text-uppercase text-white fs-22 fw-6 ls-1'>Daxil ol</Link>
               }
             </li>
             <li className='nav-item'>
