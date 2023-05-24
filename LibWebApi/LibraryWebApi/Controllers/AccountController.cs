@@ -56,7 +56,7 @@ public class AccountController : ControllerBase
 
             var token = _tokenService.GenerateToken(user);
 
-            return Ok(new { Token = token });
+            return Ok(new { Token = token, User = user });
         }
         catch (ApplicationException ex)
         {
@@ -84,6 +84,6 @@ public class AccountController : ControllerBase
         // Установка токена в заголовке ответа
         Response.Headers.Add("Authorization", $"Bearer {token}");
 
-        return Ok(new { Token = token });
+        return Ok(new { Token = token, User = user });
     }
 }
