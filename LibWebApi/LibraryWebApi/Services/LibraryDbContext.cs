@@ -29,10 +29,10 @@ public class LibraryDbContext : DbContext
 
         var faker = new Faker();
         int id = 1;
-        var books = Enumerable.Range(1, 20).Select(i => new Book
+        var books = Enumerable.Range(1, 50).Select(i => new Book
         {
             Id = id++,
-            Title = faker.Lorem.Word(),
+            Title = faker.Music.Random.ToString()!,
             Author = faker.Name.FullName(),
             Description = faker.Lorem.Sentence(),
             Genre = faker.Lorem.Word(),

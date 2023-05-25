@@ -90,5 +90,12 @@ public class BooksController : ControllerBase
         var bookResult = await _bookService.GetBooksByPageAsync(page, filter);
         return Ok(bookResult);
     }
+
+    [HttpGet("page/{page}&{title}")]
+    public async Task<ActionResult<BookResult>> GetBooksByPageAsync(int page, string title)
+    {
+        var bookResult = await _bookService.GetBooksByPageAsync(page, title);
+        return Ok(bookResult);
+    }
 }
  

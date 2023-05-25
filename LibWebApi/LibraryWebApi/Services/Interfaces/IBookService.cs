@@ -13,4 +13,5 @@ public interface IBookService
     Task<IEnumerable<Book>> FilterBooksAsync(BookFilter filter);
     Task<IEnumerable<Book>> SortBooksAsync(string sortBy);
     Task<BookResult> GetBooksByPageAsync(int page, BookFilter filter);
+    Task<BookResult> GetBooksByPageAsync(int page, string title);
 }

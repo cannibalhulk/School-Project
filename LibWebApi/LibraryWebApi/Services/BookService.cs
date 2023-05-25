@@ -1,6 +1,7 @@
 ﻿using Bogus;
 using LibraryWebApi.Models;
 using LibraryWebApi.Services.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Linq.Expressions;
@@ -165,4 +166,27 @@ public class BookService : IBookService
             CurrentPage = page
         };
     }
+    public async Task<BookResult> GetBooksByPageAsync(int page, string title)
+    {
+        int pageSize = 20;
+        var books = _dbContext.Books
+            .Where(b => b.Title.Contains(title));
+
+        // Получаем общее количество книг
+        int totalBooks = books.Count();
+
+        // Вычисляем количество страниц и применяем пагинацию
+        int totalPages = (int)Math.Ceiling((double)totalBooks / pageSize);
+        books = books.Skip((page - 1) * pageSize).Take(pageSize);
+
+        return new BookResult
+        {
+            Books = books,
+            TotalCount = totalBooks,
+            TotalPages = totalPages,
+            CurrentPage = page
+        };
+    }
+     
+
 }
