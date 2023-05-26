@@ -19,7 +19,23 @@ const AppProvider = ({ children }) => {
             const response = await fetch(`${URL}`);
             const data = await response.json();
              if (data) {
-                let newBooks = data.slice(0, 20).filter((bookSingle) => {
+                 let newBooks = [];
+                 data.forEach(el =>
+                 {
+                     newBooks.push({
+                         id: el.id,
+                         title: el.title,
+                         description: el.description,
+                         genre: el.genre,
+                         author: el.author,
+                         creationDate: el.creationDate,
+                         addedDate: el.addedDate,
+                         privateStatus: el.privateStatus,
+                         photoData: el.photoData,
+                         fileData:null
+                     });
+                 })
+                // let newBooks = data.slice(0, 20).filter((bookSingle) => {
 
                     // const pattern = new RegExp(filterAuthorText, 'i');
                     // const str = bookSingle.author_name;
@@ -35,29 +51,22 @@ const AppProvider = ({ children }) => {
                     //     return false;
                     // }
                    // return true;
-                }).map((bookSingle) => {
-                    return {
-                        id: bookSingle.id,
-                        title: bookSingle.title,
-                        description: bookSingle.description,
-                        genre: bookSingle.genre,
-                        author: bookSingle.author,
-                        creationDate: bookSingle.creationDate,
-                        addedDate: bookSingle.addedDate,
-                        privateStatus: bookSingle.privateStatus
-                    };
-                });
-
-
+                // }).map((bookSingle) => {
+                //     return {
+                //         id: bookSingle.id,
+                //         title: bookSingle.title,
+                //         description: bookSingle.description,
+                //         genre: bookSingle.genre,
+                //         author: bookSingle.author,
+                //         creationDate: bookSingle.creationDate,
+                //         addedDate: bookSingle.addedDate,
+                //         privateStatus: bookSingle.privateStatus
+                //     };
+                // });
 
                 setBooks(newBooks);
-console.log(data)
-console.log(newBooks)
-                if (newBooks.length > 1) {
-                    setResultTitle("Axtarış nəticəsi");
-                } else {
-                    setResultTitle("Axtarış nəticəsi tapılmadı");
-                }
+                newBooks.length > 1 ? setResultTitle("Axtarış nəticəsi") : setResultTitle("Axtarış nəticəsi tapılmadı");
+
             } else {
                 setBooks([]);
                 setResultTitle("Axtarış nəticəsi tapılmadı");

@@ -11,15 +11,13 @@ const BookList = () => {
   const { books, loading, resultTitle } = useGlobalContext();
   const [page, setPage] = useState(1);
 
-  const booksWithCovers = books.map((singleBook) => {
-    return {
-      ...singleBook,
-      // removing /works/ to get only id
-      id: (singleBook.id).replace("/works/", ""),
-      cover_img: singleBook.cover_id ? `https://covers.openlibrary.org/b/id/${singleBook.cover_id}-L.jpg` : coverImg
-    }
-  });
-  if (loading) return <Loading />;
+
+    const booksWithCovers = books.map((book) => {
+         return {
+            ...book,
+            photoData: (/(sjpg|gif|png|JPG|GIF|PNG|JPEG|jpeg)$/.test(book.photoData))  ? book.photoData : coverImg,
+        }
+    });  if (loading) return <Loading />;
 
   return (
     <section className='booklist'>

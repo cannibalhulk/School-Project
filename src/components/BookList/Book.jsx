@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import store from '../../redux/store'
 import { useSelector } from 'react-redux'
 import "./BookList.css";
+import { FaLock, FaLockOpen } from 'react-icons/fa';
 
 const Book = (book) => {
   let favorites = useSelector((state) => state.favorites);
@@ -32,12 +33,13 @@ const Book = (book) => {
         </div>
       }
       <div className='book-item-img'>
-        <img src={book.cover_img} alt="cover" />
+        <img src={book.photoData} alt="cover" />
       </div>
       <div className='book-item-info text-center'>
         <Link to={`/book/${book.id}`} {...book}>
           <div className='book-item-info-item title fw-7 fs-18'>
-            <span>{book.title}</span>
+            <span>{book.title} </span>
+            {book.privateStatus ? <FaLock /> : <FaLockOpen />}
           </div>
         </Link>
 
@@ -47,13 +49,13 @@ const Book = (book) => {
         </div>
 
         <div className='book-item-info-item edition-count fs-15'>
-          <span className='text-capitalize fw-7'>Ümumi nəşrlər: </span>
-          <span>{book.edition_count}</span>
+          <span className='text-capitalize fw-7'>Janr: </span>
+          <span>{book.genre}</span>
         </div>
 
         <div className='book-item-info-item publish-year fs-15'>
           <span className='text-capitalize fw-7'>İlk nəşr ili: </span>
-          <span>{book.first_publish_year}</span>
+          <span>{new Date(book.creationDate).toLocaleDateString()}</span>
         </div>
       </div>
     </div>
